@@ -19,10 +19,13 @@ Agent and CLI to control a fleet of drones (multiple UAVs), built on drone-cli �
 ```bash
 uv sync
 uv run pytest -n auto                 # run the test suite
-uv run fleet-cli whoami  # identity from culture.yaml
-uv run fleet-cli learn   # self-teaching prompt (add --json)
+uv run fleet whoami                   # identity from culture.yaml
+uv run fleet learn                    # self-teaching prompt (add --json)
 uv run teken cli doctor . --strict    # the agent-first rubric gate CI runs
 ```
+
+The console script is **`fleet`** — `fleet-cli` is the distribution name on PyPI,
+not a runnable command. `uv run python -m fleet …` works too.
 
 ## CLI
 
