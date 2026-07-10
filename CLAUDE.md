@@ -136,8 +136,16 @@ it is far faster than `teken cli doctor`.
 
 ## Adding a noun group (the specialization path)
 
-This is the shape of essentially all future work here — e.g. a `drone` or `fleet`
-noun. Five places, in order:
+This is the shape of essentially all future work here — e.g. a `drone` or
+`mission` noun. Five places, in order:
+
+> **`fleet` is a reserved noun name.** `("fleet",)` keys the *root* `explain`
+> entry, because the rubric's `explain_self` bundle probes `explain <console
+> script>` and the console script is `fleet`. A `fleet` noun group would have to
+> overwrite that key to document itself, which re-breaks the gate. The conflict
+> is inherent to the rubric, not to the catalog's lookup scheme — no aliasing
+> mechanism can make `explain fleet` render both the root docs and a noun's docs.
+> Name the drone-fleet noun something else (`drone`, `swarm`, `mission`).
 
 1. **Create `fleet/cli/_commands/<noun>.py`** exposing `register(sub) -> None`.
    Copy `cli.py`; it is the smallest complete example.

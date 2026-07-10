@@ -123,7 +123,11 @@ itself (distinct from the global `overview`, which describes the agent).
 ENTRIES: dict[tuple[str, ...], str] = {
     (): _ROOT,
     ("fleet-cli",): _ROOT,  # distribution name (prog=, doc text)
-    ("fleet",): _ROOT,  # console-script name (the runnable command)
+    # Console-script name. RESERVED: `resolve()` does exact-tuple lookup, so this
+    # key cannot also document a noun group named `fleet` — and the rubric's
+    # `explain_self` bundle requires it to render the root entry. Name any future
+    # noun `drone`/`swarm`/`mission`, never `fleet`. See CLAUDE.md.
+    ("fleet",): _ROOT,
     ("whoami",): _WHOAMI,
     ("learn",): _LEARN,
     ("explain",): _EXPLAIN,
