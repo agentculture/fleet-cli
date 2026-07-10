@@ -1,6 +1,6 @@
 [project]
 name = "fleet-cli"
-version = "0.4.0"
+version = "0.4.1"
 description = "Agent and CLI to control a fleet of drones (multiple UAVs), built on drone-cli — coordinate, command, and monitor many drones at once."
 readme = "README.md"
 license = "Apache-2.0"

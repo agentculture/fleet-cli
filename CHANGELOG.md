@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/). This project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-07-10
+
+### Added
+
+- `explain` now resolves the console-script name (`fleet`) as well as the distribution name (`fleet-cli`); both key the root catalog entry.
+- Regression test `test_explain_self_name_matches_console_script` pins that both spellings and the bare root render identically.
+
+### Changed
+
+- `CLAUDE.md` expanded from the scaffold seed into full repo guidance: agent-first CLI contracts, the noun-group specialization checklist, test-module map, and the `fleet` vs `fleet-cli` naming split.
+
+### Fixed
+
+- The agent-first rubric gate (`teken cli doctor . --strict`) now passes 26/26; it was failing `explain_self` and turning the CI `lint` job red on every PR.
+- The `explain` remediation hint pointed at `fleet-cli explain fleet-cli`, which is not a runnable command; it now names `fleet explain fleet`.
+
 ## [0.4.0] - 2026-06-23
 
 ### Added
