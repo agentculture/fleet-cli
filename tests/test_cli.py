@@ -124,14 +124,10 @@ def test_explain_self_name_matches_console_script(capsys: pytest.CaptureFixture[
     latter fails the rubric's ``explain_self`` bundle. Pinned here so the gap
     surfaces in pytest (fast) rather than only in `teken cli doctor` (slow).
     """
-    rendered = []
+    assert main(["explain"]) == 0
+    root = capsys.readouterr().out
+
     for name in ("fleet", "fleet-cli"):
         rc = main(["explain", name])
         assert rc == 0, f"explain {name} failed"
-        rendered.append(capsys.readouterr().out)
-
-    assert rendered[0] == rendered[1]
-
-    # ...and both equal the bare-root rendering.
-    assert main(["explain"]) == 0
-    assert capsys.readouterr().out == rendered[0]
+        assert capsys.readouterr().out == root, f"explain {name} != bare root"
