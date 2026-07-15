@@ -16,7 +16,10 @@ def resolve(path: tuple[str, ...]) -> str:
     raise CliError(
         code=EXIT_USER_ERROR,
         message=f"no explain entry for: {display}",
-        remediation="list entries with: fleet-cli explain fleet-cli",
+        # Name the console script, not the distribution: `fleet-cli` is not a
+        # runnable command, so a hint spelling it that way sends the reader to
+        # a "command not found".
+        remediation="list entries with: fleet explain fleet",
     )
 
 

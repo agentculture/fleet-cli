@@ -1,7 +1,11 @@
 """Markdown catalog for ``fleet-cli explain <path>``.
 
 Each entry is verbatim markdown. Keys are command-path tuples. The empty tuple
-and ``("fleet-cli",)`` both resolve to the root entry.
+resolves to the root entry, as do both spellings of this CLI's name: the
+distribution name ``("fleet-cli",)`` and the console-script name ``("fleet",)``.
+Both are registered because the agent-first rubric derives the CLI's self-name
+from the ``[project.scripts]`` entry point (``fleet``) and probes
+``explain fleet``, while the doc text throughout addresses it as ``fleet-cli``.
 
 Keep bodies self-contained: an agent reading one entry should get enough
 context without chaining reads.
@@ -118,7 +122,12 @@ itself (distinct from the global `overview`, which describes the agent).
 
 ENTRIES: dict[tuple[str, ...], str] = {
     (): _ROOT,
-    ("fleet-cli",): _ROOT,
+    ("fleet-cli",): _ROOT,  # distribution name (prog=, doc text)
+    # Console-script name. RESERVED: `resolve()` does exact-tuple lookup, so this
+    # key cannot also document a noun group named `fleet` — and the rubric's
+    # `explain_self` bundle requires it to render the root entry. Name any future
+    # noun `drone`/`swarm`/`mission`, never `fleet`. See CLAUDE.md.
+    ("fleet",): _ROOT,
     ("whoami",): _WHOAMI,
     ("learn",): _LEARN,
     ("explain",): _EXPLAIN,
